@@ -10,10 +10,10 @@ from sklearn.linear_model import LogisticRegressionCV
 sns.set_style("dark")
 
 df = pd.read_csv("project_train.csv") # Load datasets
+df_test = pd.read_csv("project_test.csv") # Load datasets
 df = df.sample(frac=1, random_state = 1) # Shuffle data, set seed for reproducibility
 
 print(df.head())
-
 
 # Split dataset into training and test sets
 ###################################################
@@ -43,7 +43,6 @@ CV_test_score = CVLogReg.score(test_data,test_labels)
 print('Test score with CV = ', str(CV_test_score))
 
 ## Perform same experiments again, but with either 'acousticness' or 'instrumentalness' removed
-
 train_data_slim = train_data.drop('acousticness', axis = 1)
 test_data_slim = test_data.drop('acousticness', axis = 1)
 
